@@ -7,9 +7,10 @@ import MenuItem from "./MenuItem";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import useLoginModal from "@/hooks/useLoginModal";
 import { User } from "@prisma/client";
+import { signOut } from "next-auth/react";
 
 interface UserMenuProps {
-  currentUser : User | null
+  currentUser?: User | null
 }
 
 const UserMenu:React.FC<UserMenuProps> = ({currentUser}) => {
@@ -70,10 +71,19 @@ const UserMenu:React.FC<UserMenuProps> = ({currentUser}) => {
           "
         >
           <div className="flex flex-col cursor-pointer">
+            {
+              currentUser ? (
+                <>
+              <MenuItem onClick={()=>{}} label="My Appointment" />
+              <hr />
+              <MenuItem onClick={()=>signOut()} label="Logout" />
+            </>
+              ):(
             <>
               <MenuItem onClick={loginModal.onOpen} label="Login" />
               <MenuItem onClick={registerModal.onOpen} label="Sign Up" />
             </>
+            )}
           </div>
         </div>
       )}
