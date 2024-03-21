@@ -97,9 +97,10 @@ const RegisterModal = () => {
           font-light
         "
       >
-        <p>
-          Already have an account?
-          <span
+        <div className="justify-center flex flex-row items-center gap-2">
+          <div>Already have an account?</div>
+          <div
+          onClick={registerModal.onClose}
             className="
               text-neutral-800
               cursor-pointer 
@@ -108,8 +109,8 @@ const RegisterModal = () => {
           >
             {" "}
             Log in
-          </span>
-        </p>
+          </div>
+        </div>
       </div>
     </div>
   );
