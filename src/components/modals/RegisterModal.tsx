@@ -32,7 +32,7 @@ const RegisterModal = () => {
     setIsLoading(true);
 
     axios
-      .post("api/register", data)
+      .post("/api/register", data)
       .then(() => {
         registerModal.onClose();
       })
@@ -56,7 +56,7 @@ const RegisterModal = () => {
         required
       />
       <Input
-        id="email"
+        id="name"
         label="Name"
         disabled={isLoading}
         register={register}
@@ -100,7 +100,7 @@ const RegisterModal = () => {
         <div className="justify-center flex flex-row items-center gap-2">
           <div>Already have an account?</div>
           <div
-          onClick={registerModal.onClose}
+            onClick={registerModal.onClose}
             className="
               text-neutral-800
               cursor-pointer 
