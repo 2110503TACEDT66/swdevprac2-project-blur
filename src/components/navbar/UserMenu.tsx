@@ -2,30 +2,37 @@
 
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar";
-import { useCallback,useState } from "react";
+import { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import useLoginModal from "@/hooks/useLoginModal";
-import { User } from "@prisma/client";
+import { SafeUser } from "@/app/types";
 import { signOut } from "next-auth/react";
 
 interface UserMenuProps {
-  currentUser?: User | null
+  currentUser?: SafeUser | null;
 }
 
-const UserMenu:React.FC<UserMenuProps> = ({currentUser}) => {
-    const registerModal = useRegisterModal();
-    const loginModal = useLoginModal();
-    const [isOpen,setIsOpen] = useState(false);
+const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
+  const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
+  const [isOpen, setIsOpen] = useState(false);
 
-    const toggleOpen = useCallback(()=> {
-        setIsOpen((value) => !value);
-    },[])
+  const toggleOpen = useCallback(() => {
+    setIsOpen((value) => !value);
+  }, []);
+
+  const onRent = useCallback(() => {
+    if(!currentUser) {
+      return loginModal.onOpen();
+    }
+  },[currentUser,loginModal])
+
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
-          onClick={() => {}}
+          onClick={onRent}
           className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
         >
           My Booking
@@ -50,7 +57,7 @@ const UserMenu:React.FC<UserMenuProps> = ({currentUser}) => {
         >
           <AiOutlineMenu />
           <div className="hidden md:block">
-            <Avatar />
+            <Avatar src={currentUser?.image} />
           </div>
         </div>
       </div>
@@ -71,18 +78,18 @@ const UserMenu:React.FC<UserMenuProps> = ({currentUser}) => {
           "
         >
           <div className="flex flex-col cursor-pointer">
-            {
-              currentUser ? (
-                <>
-              <MenuItem onClick={()=>{}} label="My Appointment" />
-              <hr />
-              <MenuItem onClick={()=>signOut()} label="Logout" />
-            </>
-              ):(
-            <>
-              <MenuItem onClick={loginModal.onOpen} label="Login" />
-              <MenuItem onClick={registerModal.onOpen} label="Sign Up" />
-            </>
+            {currentUser ? (
+              <>
+                <MenuItem onClick={() => {}} label="My Profile" />
+                <MenuItem onClick={() => signOut()} label="My Favorite" />
+                <MenuItem onClick={() => signOut()} label="My Appointment" />
+                <MenuItem onClick={() => signOut()} label="Logout" />
+              </>
+            ) : (
+              <>
+                <MenuItem onClick={loginModal.onOpen} label="Login" />
+                <MenuItem onClick={registerModal.onOpen} label="Sign Up" />
+              </>
             )}
           </div>
         </div>

@@ -29,28 +29,32 @@ const LoginModal = () => {
     defaultValues: {
       email: "",
       password: "",
-    }
+    },
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
-    signIn('credentials',{
+    signIn("credentials", {
       ...data,
-      redirect:false,
-    })
-    .then((callback)=>{
+      redirect: false,
+    }).then((callback) => {
       setIsLoading(false);
-      if(callback?.ok){
-        toast.success('logged in');
+      if (callback?.ok) {
+        toast.success("logged in");
         router.refresh();
         loginModal.onClose();
       }
-      if(callback?.error){
-        toast.error(callback.error)
+      if (callback?.error) {
+        toast.error(callback.error);
       }
-    })
+    });
   };
+
+  const toggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -81,13 +85,13 @@ const LoginModal = () => {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn("google")}
       />
       <Button
         outline
         label="Continue with Github"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn("github")}
       />
       <div
         className="
@@ -98,9 +102,9 @@ const LoginModal = () => {
         "
       >
         <div className="justify-center flex flex-row items-center gap-2">
-          <div>Already have an account?</div>
+          <div>First time using Dentisa?</div>
           <div
-          onClick={registerModal.onClose}
+            onClick={toggle}
             className="
               text-neutral-800
               cursor-pointer 
@@ -108,7 +112,7 @@ const LoginModal = () => {
             "
           >
             {" "}
-            Log in
+            Create an account
           </div>
         </div>
       </div>
