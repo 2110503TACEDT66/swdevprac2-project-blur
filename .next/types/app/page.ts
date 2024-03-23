@@ -1,4 +1,4 @@
-// File: /Users/suradet/Documents/Y1 CEDT/DEV PRACTICE II/project/swdevprac2-project-blur/src/app/page.tsx
+// File: /Users/suradet/Documents/Y1 CEDT/DEV PRACTICE II/project/swdevprac2-project-blur v1/src/app/page.tsx
 import * as entry from '../../../src/app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

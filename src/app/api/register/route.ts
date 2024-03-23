@@ -14,7 +14,7 @@ export async function POST(request: Request) {
       email,
       name,
       hashedPassword,
-    },
+    }
   });
 
   return NextResponse.json(user);
