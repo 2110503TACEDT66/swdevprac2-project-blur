@@ -100,7 +100,7 @@ const RegisterModal = () => {
         <div className="justify-center flex flex-row items-center gap-2">
           <div>Already have an account?</div>
           <div
-          onClick={registerModal.onClose}
+            onClick={registerModal.onClose}
             className="
               text-neutral-800
               cursor-pointer 
