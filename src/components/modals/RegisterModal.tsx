@@ -23,13 +23,13 @@ const RegisterModal = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, }
+    formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
       name: "",
       email: "",
       password: "",
-    }
+    },
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {

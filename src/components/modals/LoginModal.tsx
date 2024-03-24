@@ -17,14 +17,14 @@ import { useRouter } from "next/navigation";
 
 const LoginModal = () => {
   const router = useRouter();
-  const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
+  const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
     handleSubmit,
-    formState: { errors, }
+    formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
       email: "",
@@ -40,18 +40,20 @@ const LoginModal = () => {
       redirect: false,
     }).then((callback) => {
       setIsLoading(false);
+
       if (callback?.ok) {
-        toast.success("logged in");
+        toast.success("Logged in");
         router.refresh();
         loginModal.onClose();
       }
+
       if (callback?.error) {
         toast.error(callback.error);
       }
     });
   };
 
-  const toggle = useCallback(() => {
+  const onToggle = useCallback(() => {
     loginModal.onClose();
     registerModal.onOpen();
   }, [loginModal, registerModal]);
@@ -69,8 +71,8 @@ const LoginModal = () => {
       />
       <Input
         id="password"
+        label="Password"
         type="password"
-        label="password"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -78,6 +80,7 @@ const LoginModal = () => {
       />
     </div>
   );
+
   const footerContent = (
     <div className="flex flex-col gap-4 mt-3">
       <hr />
@@ -95,16 +98,12 @@ const LoginModal = () => {
       />
       <div
         className="
-          text-neutral-500 
-          text-center 
-          mt-4 
-          font-light
-        "
+      text-neutral-500 text-center mt-4 font-light"
       >
-        <div className="justify-center flex flex-row items-center gap-2">
-          <div>First time using Dentisa?</div>
-          <div
-            onClick={toggle}
+        <p>
+          First time using Airbnb?
+          <span
+            onClick={onToggle}
             className="
               text-neutral-800
               cursor-pointer 
@@ -113,8 +112,8 @@ const LoginModal = () => {
           >
             {" "}
             Create an account
-          </div>
-        </div>
+          </span>
+        </p>
       </div>
     </div>
   );

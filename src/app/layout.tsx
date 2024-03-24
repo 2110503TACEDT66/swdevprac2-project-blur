@@ -8,6 +8,8 @@ import Modal from "@/components/modals/Modal";
 import RegisterModal from "@/components/modals/RegisterModal";
 import LoginModal from "@/components/modals/LoginModal";
 import ToasterProvider from "@/providers/ToasterProvider";
+import getCurrentUser from "./actions/getCurrentUser";
+import AppointmentModal from "@/components/modals/AppointmentModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,13 +27,17 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const currentUser = await getCurrentUser();
+
   return (
     <html lang="en">
       <body className={font.className}>
         <ClientOnly>
-          <ToasterProvider/>
-          <RegisterModal/>
-          <Navbar />
+          <ToasterProvider />
+          <LoginModal />
+          <AppointmentModal />
+          <RegisterModal />
+          <Navbar currentUser={currentUser} />
         </ClientOnly>
         <div className="pb-20 pt-28">{children}</div>
       </body>
