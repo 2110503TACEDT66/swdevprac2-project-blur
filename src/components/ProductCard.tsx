@@ -11,7 +11,8 @@ imgSrc:string, onCompare?:Function}){
   return(
     <InteractiveCard contentName={dentistName}>
       <div className='w-full h-[70%] relative rounded-t-lg'>
-      <Image src='https://drive.google.com/file/d/1st3QwYe98sCKhv8hiyp4lGpS6mzMiaaf/view'
+      <Image 
+          src={imgSrc}
           alt='Produvt Picture'
           fill={true}
           className='object-cover rounded-t-lg'/>

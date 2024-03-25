@@ -45,8 +45,8 @@ export default function DentistPanel (){
     {cid:"003", name:"Toyota Fortuner", image:"/img/fortuner.jpg"},
     {cid:"004", name:"Tesla Model 3", image:"/img/tesla.jpg"}
   ]*/
+  
   if(!dentistResponse) return <p>Dentist panal is Loding ...</p>
-
   return (
       <div>
           <div style={{margin:"20px", display:"flex",
@@ -56,6 +56,7 @@ export default function DentistPanel (){
                dentistResponse.data.map((dentistItem:DentistItem)=>(
                 <Link href={`/dentists/${dentistItem.id}`} className="w-1/5">
                   <ProducCard dentistName={dentistItem.name} imgSrc={dentistItem.imageUrl}
+                  
                   onCompare={(dentist:string)=>dispatchCompare({type:'add', dentistName:dentist})}
                   />
                 </Link>
