@@ -1,9 +1,9 @@
  import Image from "next/image"
- import getCar from "@/libs/getDentist"
  import Link from "next/link";
+import getDentist from "@/libs/getDentist";
  export default async function CarDetailPage({params}: {params: {cid: string}}){
 
-  const carDetail = await getCar(params.cid)
+  const carDetail = await getDentist(params.cid)
   /**
    *  Mock Date for Demonstration Only
    */
@@ -17,32 +17,25 @@
 
   return (
     <main className="text-center p-5">
-      <h1 className="text-lg font-medium">{carDetail.data.model}</h1>
+      <h1 className="text-lg font-medium">{carDetail.data.name}</h1>
 
       <div className="flex flex-row my-5">
-        <Image src={ carDetail.data.picture }
+        <Image src={ carDetail.data.imageUrl }
             alt='Product Picture'
             width={0} height={0} sizes="100vw"
             className="rounded-lg w-[30%] bg-black"/>
 
-        <div className="text-left text-md mx-5">
-          <div>{ carDetail.data.description }</div>
-          <div>Doors : { carDetail.data.doors }</div>
-          <div>Seats : { carDetail.data.seats }</div>
-          <div>Largebags: { carDetail.data.largebags }</div>
-          <div>Smallbags : { carDetail.data.smallbags }</div>
-          <div>Daily Rental Rate : { carDetail.data.dayRate } (insurance included)</div>
-          <Link href={`/reservations?id=${params.cid}&model=${carDetail.data.model}`}>
+        <div className="text-left text-xl mx-5">
+          <div>Year Of Experience : { carDetail.data.yearOfExperience } years</div>
+          <div>Area Of Expertise : { carDetail.data.areaOfExpertise }</div>
+          <div>Appointment : { carDetail.data.appointment }</div>
+          <Link href={`/reservations?id=${params.cid}&model=${carDetail.data.name}`}>
           <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2
                 text-white shadow-sm">
-                  Make Reservation
+                  Booking
           </button>
         </Link>
         </div>
-      
-
-      
-      
       </div>
       
     </main>

@@ -3,14 +3,15 @@ export interface DentistItem{
   name:string,
   yearOfExperience:number,
   areaOfExpertise:string,
-  imageUrl:string
+  imageUrl:string,
+  appointment:BookingItem[],
 }
 
 export interface DentistJson{
   success: boolean,
   count: number,
   pagination: Object,
-  data: DentistItem[]
+  data: DentistItem[],
 }
 
 export interface BookingItem{
@@ -21,5 +22,5 @@ export interface BookingItem{
   service:string,
   clinic:string,
   duration:number,
-  status:string
+  status:string,
 }

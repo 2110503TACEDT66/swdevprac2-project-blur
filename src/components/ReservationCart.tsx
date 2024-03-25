@@ -4,25 +4,19 @@ import { AppDispatch, useAppSelector } from "@/redux/store"
 import { useDispatch } from "react-redux"
 
 export default function ReservationCart(){
-  const dentistName = useAppSelector( (state)=> state.cartSlice.dentistName )
+  const booking = useAppSelector( (state)=> state.cartSlice.booking )
   const dispatch = useDispatch<AppDispatch>()
   return (
     <>
     {
-      dentistName.map((reservationItem)=> (
-        <div className="bg-slate-200 rounded px-5 mx-5 py-2 my-2" key={reservationItem.carId}>
-          <div className="text-xl">{reservationItem.carModel}</div>
-          <div className="text-sm">
-            Pick-Up {reservationItem.pickupDate} from {reservationItem.pickupLocation}
-          </div>
-
-          <div className="text-sm">
-            Return {reservationItem.returnDate} from {reservationItem.returnLocation}
-          </div>
-
-          <div className="text-md">Duration: {reservationItem.numOfDays} days</div>
+      booking?.map((bookItem)=> (
+        <div className="bg-slate-200 rounded px-5 mx-5 py-2 my-2" key={bookItem.id}>
+          <div className="text-xl">{bookItem.dentist}</div>
+          <div className="text-sm">Appointment Date {bookItem.appt.toString()} </div>
+          <div className="text-sm">Duration {bookItem.duration} minute</div>
+          <div className="text-sm">Status {bookItem.status}</div>
           <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2
-                text-white shadow-sm" onClick={()=> dispatch(removeReservation(reservationItem))}>
+                text-white shadow-sm" onClick={()=> dispatch(removeReservation(bookItem.id))}>
                   Remove from Cart
           </button>
         </div>

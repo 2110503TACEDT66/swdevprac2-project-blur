@@ -6,7 +6,7 @@ import getDentists from "@/libs/getDentists";
 import DentistCatalog from "@/components/DentistCatalog";
 
 export default async function Car(){
-  const dentist = getDentists()
+  const dentist = await getDentists()
 
   return (
     <main className="text-center p-5">
@@ -16,7 +16,7 @@ export default async function Car(){
       </Suspense>
 
       <hr className="my-10" />
-      <h1>Try Client side Car Panel</h1>
+      <h1>Try Client side Dentist Panel</h1>
       <CarPanel/>
 
     </main>
