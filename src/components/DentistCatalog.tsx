@@ -13,8 +13,8 @@ export default async function DentistCatalog({dentistJson}:{dentistJson:DentistJ
           justifyContent:"space-around", padding: "10px"}}>
             {
                dentistJsonReady.data.map((dentistItem:DentistItem)=>(
-                <Link href={`/car/${dentistItem.id}`} className="w-[100%] sm:w-[50%] md:w-[30%] lg:w-[25%] p-2 sm:p-4 md:p-4 lg:p-8">
-                  <ProducCard dentistName={dentistItem.name} imgSrc='https://drive.google.com/file/d/1st3QwYe98sCKhv8hiyp4lGpS6mzMiaaf/view'/>
+                <Link href={`/dentist/${dentistItem.id}`} className="w-[100%] sm:w-[50%] md:w-[30%] lg:w-[25%] p-2 sm:p-4 md:p-4 lg:p-8">
+                  <ProducCard dentistName={dentistItem.name} imgSrc={dentistItem.imageUrl}/>
                 </Link>
                 )
               )

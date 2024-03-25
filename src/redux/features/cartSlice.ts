@@ -2,25 +2,25 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { BookingItem } from "../../../interfaces";
 
 type CartState = {
-  dentistName: BookingItem[] // aray of reservation
+  dentistItem: BookingItem[] // aray of reservation
 }
 
-const initialState:CartState = { dentistName:[] }
+const initialState:CartState = { dentistItem:[] }
 
 export const cartSlice = createSlice({
   name:"cart",
   initialState,
   reducers: {
     addReservation: (state, action:PayloadAction<BookingItem>)=>{
-      state.dentistName.push(action.payload)
+      state.dentistItem.push(action.payload)
     },
     removeReservation: (state, action:PayloadAction<BookingItem>)=> {
-      const remainItems =  state.dentistName.filter( obj => {
+      const remainItems =  state.dentistItem.filter( obj => {
         return ( (obj.name !== action.payload.carModel)
         ||(obj.pickupDate !== action.payload.pickupDate)
-        ||(obj.returnDate !== action.payload.returnDate) );
+        ||(obj.eturnDate !== action.payload.returnDate) );
       })
-      state.dentistName = remainItems
+      state.dentistItem = remainItems
     }
   }
 })
