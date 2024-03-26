@@ -18,7 +18,7 @@ export default async function TopMenu() {
         </Link>
         <TopMenuItem title='Dentists' pageRef='/dentist'/>
         <TopMenuItem title='Booking' pageRef='/dentist'/>
-        <TopMenuItem title='About' pageRef='/about'/>
+        <TopMenuItem title='Manage' pageRef='/reservations/manage'/>
         <TopMenuItem title='Appointment' pageRef='/mybooking'/>
         <div className='flex items-center absolute right-0 h-full px-2 text-cyan-600 text-sm mx-20
         hover:text-white hover:bg-cyan-600 hover:border-transparent'>

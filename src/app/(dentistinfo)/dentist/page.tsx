@@ -4,20 +4,21 @@ import { LinearProgress } from "@mui/material";
 import CarPanel from "@/components/DentistPanel";
 import getDentists from "@/libs/getDentists";
 import DentistCatalog from "@/components/DentistCatalog";
+import Footer from '@/components/Footer';
 
 export default async function Car(){
   const dentist = await getDentists()
 
   return (
-    <main className="text-center p-5">
-      <h1 className="text-xl font-medium">Select Dentist</h1>
+    <main className="text-center">
+      <h1 className="text-xl font-medium p-5">Select Dentist</h1>
       <Suspense fallback={<p>Loding ...<LinearProgress/></p> }>
       <DentistCatalog dentistJson={dentist}/>
       </Suspense>
 
       <hr className="my-10" />
 
-
+      <Footer/>
     </main>
   );
 }

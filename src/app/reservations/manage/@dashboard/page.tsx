@@ -78,6 +78,6 @@ export default async function DashboardPage (){
         </form>
         : null
       }
-          </main>
+      </main>
   );
 }

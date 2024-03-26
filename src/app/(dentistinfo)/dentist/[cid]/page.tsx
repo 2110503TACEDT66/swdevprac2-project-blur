@@ -1,6 +1,8 @@
  import Image from "next/image"
  import Link from "next/link";
 import getDentist from "@/libs/getDentist";
+import Footer from "@/components/Footer";
+
  export default async function DentistDetailPage({params}: {params: {cid: string}}){
 
   const dentistDetail = await getDentist(params.cid)
@@ -16,16 +18,16 @@ import getDentist from "@/libs/getDentist";
   */
 
   return (
-    <main className="text-center p-5">
-      <h1 className="text-lg font-medium underline decoration-gray-400 decoration-solid underline-offset-4 font-medium text-xl">{dentistDetail.data.name}</h1>
+    <main className="text-center">
+      <h1 className="text-lg font-medium underline decoration-gray-400 decoration-solid underline-offset-4 font-medium text-xl p-5">{dentistDetail.data.name}</h1>
 
-      <div className="flex flex-row my-5">
+      <div className="flex flex-row my-5 p-5">
         <Image src={ dentistDetail.data.imageUrl }
             alt='Product Picture'
             width={0} height={0} sizes="100vw"
-            className="rounded-lg w-[30%] bg-black"/>
+            className="rounded-lg w-[30%] bg-black "/>
 
-        <div className="text-left text-xl mx-5">
+        <div className="text-left text-xl mx-5 ">
           <div>Year Of Experience : { dentistDetail.data.yearsOfExperience } years</div>
           <div>Area Of Expertise : { dentistDetail.data.areaOfExpertise }</div>
           <Link href={`/reservations?id=${params.cid}&dentist=${dentistDetail.data.name}`}>
@@ -36,7 +38,7 @@ import getDentist from "@/libs/getDentist";
         </Link>
         </div>
       </div>
-      
+      <Footer/>
     </main>
   );
  }

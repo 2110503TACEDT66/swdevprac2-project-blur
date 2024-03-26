@@ -8,6 +8,7 @@ import { AppDispatch } from "@/redux/store";
 import { BookingItem } from "../../../interfaces";
 import { addBooking } from "@/redux/features/bookSlice";
 import { useSession } from "next-auth/react";
+import Footer from '@/components/Footer';
 
 export default function Reservations (){
 
@@ -59,6 +60,7 @@ export default function Reservations (){
       </button>
       <div>
       </div>
+      <Footer/>
     </main>
   );
 }
