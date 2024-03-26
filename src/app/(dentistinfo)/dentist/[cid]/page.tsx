@@ -1,7 +1,7 @@
  import Image from "next/image"
  import Link from "next/link";
 import getDentist from "@/libs/getDentist";
- export default async function CarDetailPage({params}: {params: {cid: string}}){
+ export default async function DentistDetailPage({params}: {params: {cid: string}}){
 
   const dentistDetail = await getDentist(params.cid)
   /**
@@ -28,7 +28,7 @@ import getDentist from "@/libs/getDentist";
         <div className="text-left text-xl mx-5">
           <div>Year Of Experience : { dentistDetail.data.yearsOfExperience } years</div>
           <div>Area Of Expertise : { dentistDetail.data.areaOfExpertise }</div>
-          <Link href={`/reservations?id=${params.cid}&model=${dentistDetail.data.name}`}>
+          <Link href={`/reservations?id=${params.cid}&dentist=${dentistDetail.data.name}`}>
           <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2
                 text-white shadow-sm">
                   Booking
@@ -40,7 +40,8 @@ import getDentist from "@/libs/getDentist";
     </main>
   );
  }
-
+/*
  export async function generateStaticParams() {
    return [{cid:'001'}, {cid:'002'}, {cid:'003'}, {cid:'004'}]
  }
+*/

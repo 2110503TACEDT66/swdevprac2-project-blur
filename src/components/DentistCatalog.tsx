@@ -7,7 +7,7 @@ export default async function DentistCatalog({dentistJson}:{dentistJson:DentistJ
   const dentistJsonReady = await dentistJson
   return (
     <>
-    Explore {dentistJsonReady.count} models in our carCatalog
+    Select {dentistJsonReady.count} Dentist in our website
     <div style={{margin:"20px", display:"flex",
           flexDirection:"row",flexWrap:"wrap", alignContent:"space-around", 
           justifyContent:"space-around", padding: "10px"}}>

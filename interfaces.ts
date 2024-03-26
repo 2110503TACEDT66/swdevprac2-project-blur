@@ -15,12 +15,9 @@ export interface DentistJson{
 }
 
 export interface BookingItem{
-  id:string,
-  appt:Date,
-  user:string,
-  dentist:string,
-  service:string,
-  clinic:string,
-  duration:number,
-  status:string,
+  name: string;
+  surname: string;
+  id: string;
+  dentist: string;
+  appt: string;
 }
