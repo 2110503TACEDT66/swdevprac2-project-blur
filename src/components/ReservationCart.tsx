@@ -11,11 +11,12 @@ export default  function ReservationCart(){
   const dispatch = useDispatch<AppDispatch>()
   const {data:session} = useSession()
 
+
   return (
     <>
     {
         booking.map((bookItem:BookingItem)=> (
-        <div className="bg-slate-200 rounded px-5 mx-5 py-2 my-2" key={bookItem.id}>
+        <div className="rounded px-5 mx-5 py-2 my-2" key={bookItem.id}>
           {
             session?.user.token === bookItem.token && session?.user.role !== 'admin'?
             <>
@@ -28,10 +29,7 @@ export default  function ReservationCart(){
                   text-white shadow-sm" onClick={()=> dispatch(removeBooking(bookItem.id))}>
                   Remove appointment
               </button>
-            </>:null
-          }
-          {
-            session?.user.role === "admin"?
+            </>:session?.user.role === "admin"?
             <>
               <div className="text-xl">{bookItem.dentist}</div>
               <div className="text-xl">Appointment Date {bookItem.appt.toString()} </div>
