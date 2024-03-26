@@ -53,7 +53,10 @@ export default function Reservations (){
       text-white shadow-sm" onClick={makeBooking}>
         Make Appointment
       </button>
-      
+      (profile.data.role =="admin")?
+      <div>
+        
+      </div>
     </main>
   );
 }

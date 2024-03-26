@@ -8,26 +8,26 @@ import { redirect } from "next/navigation";
 
 export default async function DashboardPage (){
 
-  const addDentist = async (addCarForm:FormData) => {
+  const addDentist = async (addDentistForm:FormData) => {
     "use server"
-    const name = addCarForm.get("name")
-    const yearsOfExperience = addCarForm.get("yearOfExperience")
-    const areaOfExpertise = addCarForm.get("areaOfExpertise")
-    const imageUrl = addCarForm.get("imageUrl")
+    const name = addDentistForm.get("name")
+    const yearsOfExperience = addDentistForm.get("yearsOfExperience")
+    const areaOfExpertise = addDentistForm.get("areaOfExpertise")
+    const imageUrl = addDentistForm.get("imageUrl")
 
     try {
       await dbConnect()
       const car = await Dentist.create({
         "name": name,
-        "yearOfExperience": yearsOfExperience,
+        "yearsOfExperience": yearsOfExperience,
         "areaOfExpertise": areaOfExpertise,
         "imageUrl": imageUrl,
       })
     } catch (error) {
         console.log(error)
     }
-    revalidateTag("cars")
-    redirect("/car")
+    revalidateTag("dentists")
+    redirect("/dentist")
   }
 
 
@@ -61,7 +61,7 @@ export default async function DashboardPage (){
           </div>
           <div className="flex items-center w-1/2 my-2">
               <label className="w-auto block text-gray-700 pr-4" htmlFor="desc">Years Of Experience</label>
-              <input type="number" required id="yearsOfExperience" name="yearsOfExperience" placeholder="yearsOfExperience" min={0} max={40}
+              <input type="Number" required id="yearsOfExperience" name="yearsOfExperience" placeholder="yearsOfExperience" min={0} max={40}
               className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 focus:outline-none focus:border-blue-400"/>
           </div>
           <div className="flex items-center w-1/2 my-2">
