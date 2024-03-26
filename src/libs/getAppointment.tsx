@@ -1,6 +1,6 @@
 export default async function getAppointment(token:string,Id:string){
     
-    const response = await fetch(`http://localhost:5000/api/v1/appointments/${Id}`,{
+    const response = await fetch (`${process.env.BACKEND_URL}/api/v1/appointments/${Id}`,{
         method:'GET',
         headers:{
             authorization: `Bearer ${token}`,
