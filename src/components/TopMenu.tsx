@@ -1,5 +1,4 @@
 import TopMenuItem from './TopMenuItem';
-import styles from './topmenu.module.css'
 import Image from 'next/image';
 import {getServerSession} from 'next-auth'
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
@@ -15,7 +14,7 @@ export default async function TopMenu() {
     <div className="h-12 bg-gray-100 fixed top-0 right-0 left-0 z-50 border-y-2 border-gray-200 flex flex-row">
         <Image src={'/img/logo1.png'} className="h-100 w-auto size-9"
         alt='logo' width={0} height={0} sizes='90vh'/>
-        <TopMenuItem title='Dentists' pageRef='/car'/>
+        <TopMenuItem title='Dentists' pageRef='/dentist'/>
         <TopMenuItem title='Booking' pageRef='/reservations'/>
         <TopMenuItem title='About' pageRef='/about'/>
         <div className='flex items-center absolute right-0 h-full px-2 text-cyan-600 text-sm mx-20

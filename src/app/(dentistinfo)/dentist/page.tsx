@@ -16,8 +16,7 @@ export default async function Car(){
       </Suspense>
 
       <hr className="my-10" />
-      <h1>Try Client side Dentist Panel</h1>
-      <CarPanel/>
+
 
     </main>
   );
