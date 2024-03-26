@@ -12,20 +12,21 @@ export const cartSlice = createSlice({
   initialState,
   reducers:{
     addBooking : (state,action:PayloadAction<BookingItem>) =>{
-      const { id,name,surname,dentist } = action.payload
-      const existBooking = state.booking.findIndex(bookitem => bookitem.id === id || bookitem.name === name 
-        || bookitem.surname === surname || bookitem.dentist === dentist)
-      if (existBooking !== -1) {
-          
-          state.booking[existBooking] = action.payload;
-        } else {
-          
-          state.booking.push(action.payload);
-        }
+      const existingBookingIndex = state.booking.findIndex(
+        (bookItem) => bookItem.id === action.payload.id
+      );
+
+      if (existingBookingIndex !== -1) {
+        state.booking[existingBookingIndex] = action.payload;
+      } else {
+        state.booking.push(action.payload);
+      }
     },
     removeBooking : (state, action: PayloadAction<string>) => {
-        const idToRemove = action.payload;
-        state.booking = state.booking.filter(booking => booking.id !== idToRemove);
+      const remainingItems = state.booking.filter(
+        (obj) => obj.id !== action.payload
+      );
+      state.booking = remainingItems;
       }
 }
 })

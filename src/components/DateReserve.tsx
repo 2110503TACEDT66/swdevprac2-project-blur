@@ -15,6 +15,7 @@ export default function LocationDateReserve ({onDateChange,onFnameChange,onLname
   const [lName,setLName] = useState<string|null>(null)
   const [cId,setCid] = useState<string|null>(null)
 
+  
 
   return (
     <div className="rounded-lg space-y-2

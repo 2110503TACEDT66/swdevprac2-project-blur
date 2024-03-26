@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 import { BookingItem } from "../../../interfaces";
 import { addBooking } from "@/redux/features/bookSlice";
+import { useSession } from "next-auth/react";
 
 export default function Reservations (){
 
@@ -16,6 +17,8 @@ export default function Reservations (){
 
   const dispatch = useDispatch<AppDispatch>()
 
+  const {data:session} = useSession()
+
   const makeBooking = () => {
     if( hid && dentist && apptDate && fName && lName && cId){
       const item:BookingItem = {
@@ -24,6 +27,7 @@ export default function Reservations (){
         id:cId,
         dentist: dentist,
         appt: dayjs(apptDate).format("YYYY/MM/DD"),
+        token: session?.user.token || "null" ,
       }
       dispatch(addBooking(item))
     }
@@ -53,9 +57,7 @@ export default function Reservations (){
       text-white shadow-sm" onClick={makeBooking}>
         Make Appointment
       </button>
-      (profile.data.role =="admin")?
       <div>
-        
       </div>
     </main>
   );
