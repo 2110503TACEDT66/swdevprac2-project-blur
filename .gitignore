@@ -40,7 +40,7 @@ next-env.d.ts
 src/components/*.cy.tsx
 cypress.config.ts
 
-# lest
+# jest
 /__tests__
 jest.config.js
 jest.setup.js
