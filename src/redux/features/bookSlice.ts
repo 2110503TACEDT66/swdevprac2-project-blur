@@ -8,7 +8,7 @@ type bookState = {
 const initialState:bookState = { booking:[] }
 
 export const cartSlice = createSlice({
-  name:"booking",
+  name:"fucking",
   initialState,
   reducers:{
     addBooking : (state,action:PayloadAction<BookingItem>) =>{
