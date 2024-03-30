@@ -12,7 +12,7 @@ export default async function TopMenu() {
   return (
 
 <div className="h-12 bg-gray-100 fixed top-0 right-0 left-0 z-50 border-y-2 border-gray-200 flex flex-row">
-        <Link href="http://localhost:3000/">
+        <Link href="/">
         <Image src={'/img/logo1.png'} className="h-100 w-auto size-9"
         alt='logo' width={0} height={0} sizes='90vh'/>
         </Link>
