@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 import { DentistJson } from "../../../../interfaces";
 export default async function Car(){
   const dentist:DentistJson = await getDentists()
-
+console.log(dentist);
   return (
     <main className="text-center">
       <h1 className="text-xl font-medium p-5">Select Dentist</h1>
